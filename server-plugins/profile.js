@@ -275,9 +275,9 @@ exports.commands = {
 		},
 	},
 
-	pteam: 'profileteam', 
+	pteam: 'profileteam',
 	profileteam: {
-    	add: 'set',
+		add: 'set',
 		set: function (target, room, user) {
 			if (!Db('hasteam').has(user.userid)) return this.errorReply('You dont have access to edit your team.');
 			if (!target) return this.parse('/profileteam help');
@@ -305,7 +305,7 @@ exports.commands = {
 			if (!Db('hasteam').has(user)) return this.errorReply('This user does not have the ability to set their team.');
 			Db('hasteam').delete(user);
 			this.sendReply('This user has had their ability to change their team taken from them.');
-		}, 
+		},
 		help: function (target, room, user) {
 			if (!this.runBroadcast()) return;
 			this.sendReplyBox(
@@ -429,7 +429,7 @@ exports.commands = {
 
 			teamDisplay += '</div></center>';
 			return teamDisplay;
-		};
+		}
 
 		function showProfile() {
 			Economy.readMoney(toId(username), money => {
@@ -451,7 +451,7 @@ exports.commands = {
 				if (Db("friendcode").has(toId(username))) {
 					profile += '&nbsp;<font color="#24678d"><strong>Friend Code:</strong></font> ' + Db("friendcode").get(toId(username));
 				}
-				profile +='&nbsp;' + showTeam(toId(username)) + '';
+				profile += '&nbsp;' + showTeam(toId(username)) + '';
 				profile += '<br clear="all">';
 				self.sendReplyBox(profile);
 			});
